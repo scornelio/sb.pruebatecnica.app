@@ -9,12 +9,12 @@ function GovernmentEntitiesList() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedEntity, setSelectedEntity] = useState(null);
 
-  useEffect(() => {
-    const loadEntities = async () => {
-      const fetchedEntities = await fetchEntities();
-      setEntities(fetchedEntities);
-    };
+  const loadEntities = async () => {
+    const fetchedEntities = await fetchEntities();
+    setEntities(fetchedEntities);
+  };
 
+  useEffect(() => {
     loadEntities();
   }, []); 
 
@@ -89,7 +89,7 @@ function GovernmentEntitiesList() {
 
         <tbody>
         {entities.map(entity => (
-          <tr>
+          <tr key={entity.id}>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
             {entity.name}
             </td>
